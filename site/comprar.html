@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- JQUERY -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Common CSS & JS -->
+    <link rel="stylesheet" href="css/common.css">
+    <script src="js/common.js"></script>
+
+    <title>#SaveMyTrip</title>
+</head>
+<body>
+    <header class="header">
+        <div>
+            <img src="imgs/paper-plane.svg">
+        </div>
+        <div>
+            <h1>#SaveMyTrip</h1>
+            <p>Queremos te proporcionar uma relação diferente com sua seguradora</p>
+
+        </div>
+    </header>
+
+    <section class="main_section">
+        <h1>Sua viagem</h1>
+
+        <div class="form">
+            <div class="campos_obgt_apolice">
+                <div class="form-input">
+                    <input type="text" placeholder="Nome">
+                </div>
+
+                <div class="form-input">
+                    <input type="date" placeholder="Nascimento" onchange="this.className=(this.value!=''?'has-value':'')" style="width: 35%;">
+                    <input type="text" placeholder="CPF" style="width: 63%;">
+                </div>
+            </div>
+        </div>
+
+        <button class="btn" onclick="addSegurados()">+ segurados</button>
+
+        <div class="form-input">
+            <button class="btn btn-comprar" onclick="location.href='dados_cartao.html'">Avançar</button>
+        </div>
+    </section>
+
+    <script>
+        function addSegurados() {
+            var haha = "<div class='campos_obgt_apolice'><div class='form-input'><input type='text' placeholder='Nome'></div><div class='form-input'><input type='date' placeholder='Nascimento' onchange='this.className=(this.value!=''?'has-value':'')' style='width: 35%;'><input type='text' placeholder='CPF' style='width: 63%;'></div></div>";
+            $(".form").append(haha);
+        }
+    </script>
+</body>
+</html>

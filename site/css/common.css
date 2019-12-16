@@ -1,0 +1,158 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.header {
+    background-color: #13a3d8;
+    height: 130px;
+    border-bottom-right-radius: 120px;
+    color: #fff;
+    padding: 20px;
+}
+
+.header img {
+    width: 50px;
+}
+
+.header h1 {
+    font-size: 25px;
+}
+
+.header p {
+    padding-right: 30px;
+}
+
+.main_section {
+    padding: 15px;
+}
+
+.main_section h1 {
+    color: #13a3d8;
+}
+
+.form {
+    margin: 10px auto;
+}
+
+.form .form-input {
+    width: 100%;
+    margin: 20px auto;
+}
+
+.form .form-input input {
+    width: 100%;
+    height: 35px;
+    border: none;
+    border-bottom: 1px solid #000;
+    background-color: #fff;
+}
+
+.form .form-input input[type="date"]:not(.has-value):before{
+    color: #999;
+    content: attr(placeholder);
+}
+
+::placeholder {
+    color: #999;
+    opacity: 1; /* Firefox */
+  }
+  
+  :-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color: #999;
+  }
+  
+  ::-ms-input-placeholder { /* Microsoft Edge */
+   color: #999;
+  }
+
+.btn {
+    margin-top: 15px;
+    width: 100%;
+    background-color: #13a3d8;
+    color: #fff;
+    border: none;
+    padding: 13px;
+    font-size: 17px;
+    border-radius: 10px;
+}
+
+/* TELA DE APOLICE */
+.card_apolice {
+    box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2), 0 4px 20px 0 rgba(0,0,0,0.19);
+    padding: 15px;
+    margin-top: 15px;
+}
+
+.card_apolice .img_section {
+    margin: 0 auto;
+}
+.card_apolice .img_section img {
+    width: 70px;
+    border-radius: 50%;
+    margin: 0 auto;
+    display: block;
+}
+
+.texto_apolice p {
+    margin-top: 15px;
+}
+
+.valor_apolice {
+    margin-top: 30px;
+    font-style: italic;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.aviso_pagamento {
+    margin-top: 15px;
+}
+
+.aviso_pagamento img {
+    width: 100%;
+}
+
+.btn-comprar {
+    background-color: #38c324;
+    font-size: 23px;
+}
+
+.valor_apolice_detalhe {
+    font-size: 30px;
+}
+
+/* COMPRAR.HTML */
+.campos_obgt_apolice {
+    box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2), 0 4px 20px 0 rgba(0,0,0,0.19);
+    padding: 10px;
+    margin-top: 10px;
+}
+
+h2 {
+    font-size: 18px;
+    text-align: center;
+    margin-top: 25px;
+    color: #13a3d8;
+}
+
+.sucesso {
+    background-color: #38c324;
+    padding: 10px;
+    margin-top: 20px;
+    border-radius: 10px;
+    color: #fff;
+}
+
+.erro {
+    background-color: #c32424;
+    padding: 10px;
+    margin-top: 20px;
+    border-radius: 10px;
+    color: #fff;
+}

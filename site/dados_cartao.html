@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- JQUERY -->
+    <script src="js/jquery.js"></script>
+    <!-- Common CSS & JS -->
+    <link rel="stylesheet" href="css/common.css">
+    <script src="js/common.js"></script>
+
+    <title>#SaveMyTrip</title>
+</head>
+<body>
+    <header class="header">
+        <div>
+            <img src="imgs/paper-plane.svg">
+        </div>
+        <div>
+            <h1>#SaveMyTrip</h1>
+            <p>Queremos te proporcionar uma relação diferente com sua seguradora</p>
+
+        </div>
+    </header>
+
+    <section class="main_section">
+        <h1>Dados do cartão e de contato</h1>
+
+        <form action="compra_confirmada.html" class="form">
+            <h2>Dados do cartão</h2>
+            <div class="form-input">
+                <input type="text" placeholder="Número: 0000 0000 0000 0000">
+            </div>
+
+            <div class="form-input">
+                <input type="text" placeholder="Nome (que consta no cartão)">
+            </div>
+
+            <div class="form-input">
+                <input type="text" placeholder="Validade: mm/YYYY">
+            </div>
+
+            <div class="form-input">
+                <input type="text" placeholder="CVV (Código de segurança)">
+            </div>
+
+            <!-- ------------------------- -->
+            <h2>Dados do contato</h2>
+            <div class="form-input">
+                <input type="text" placeholder="Nome do comprador">
+            </div>
+
+            <div class="form-input">
+                <input type="email" placeholder="E-mail">
+            </div>
+
+            <div class="form-input">
+                <input type="text" placeholder="Telefone">
+            </div>
+
+            <div class="form-input">
+                <input type="text" placeholder="CEP" id="cep" name="cep" onblur="consultaCep()">
+            </div>
+
+            <div class="form-input">
+                <input type="text" placeholder="Endereço" id="endereco">
+            </div>
+
+            <div class="form-input">
+                <input type="text" placeholder="Número">
+            </div>
+
+            <div class="form-input">
+                <input type="text" placeholder="Complemento">
+            </div>
+
+            <div class="form-input">
+                <input type="text" placeholder="Bairro" id="bairro">
+            </div>
+
+            <div class="form-input">
+                <input type="text" placeholder="Cidade" id="cidade" readonly>
+            </div>
+
+            <div class="form-input">
+                <input type="text" placeholder="Estado" id="estado" readonly>
+            </div>
+
+            <div class="form-input">
+                <button class="btn btn-comprar">Confirmar compra</button>
+            </div>
+        </form>
+    </section>
+
+    <script>
+        function consultaCep() {
+            var url = "https://viacep.com.br/ws/"+$("#cep").val()+"/json/";
+
+            $.ajax({
+                url: url,
+            }).done(function(data) {
+                console.warn(data);
+                $("#endereco").val(data['logradouro']);
+                $("#estado").val(data['uf']);
+                $("#cidade").val(data['localidade']);
+                $("#bairro").val(data['bairro']);
+            });
+        }
+    </script>
+</body>
+</html>

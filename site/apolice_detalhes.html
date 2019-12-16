@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- JQUERY -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Common CSS & JS -->
+    <link rel="stylesheet" href="css/common.css">
+    <script src="js/common.js"></script>
+
+    <title>#SaveMyTrip</title>
+</head>
+<body>
+    <header class="header">
+        <div>
+            <img src="imgs/paper-plane.svg">
+        </div>
+        <div>
+            <h1>#SaveMyTrip</h1>
+            <p>Queremos te proporcionar uma relação diferente com sua seguradora</p>
+
+        </div>
+    </header>
+
+    <section class="main_section">
+
+        <div class="apolices">
+            <div class="card_apolice">
+            </div>
+
+            <div class="aviso_pagamento">
+                <small>*Só aceitamos pagamento através de cartão de crédito.</small>
+                <img src="imgs/bandeiras_cartoes.png">
+            </div>
+
+            <div class="form-input">
+                <button class="btn btn-comprar" onclick="location.href='comprar.html'">Comprar</button>
+            </div>
+        </div>
+    </section>
+
+
+    <script>
+        var is = getParameters();
+
+        var cotacoes = {
+            "cotacoes":[
+                {
+                    "descricao":"Seguro de Viagem completo plusDespesas Médicas, Hospitalares e/ou Odontológicas - DMHO - R$ 10.000,00\nMorte acidental - R$ 80.000,00\nInvalidez Permanente Total ou Parcial por Acidente - R$ 80.000,00",
+                    "operadora":"Travel Ace",
+                    "dataSaida":"20-12-2019",
+                    "dataRetorno":"31-12-2019",
+                    "valorCompra":"R$ 80,00",
+                    "formaPagamento":"Cartão de Crédito",
+                    "imgUrl":"https://www.multiseguroviagem.com.br/www/img/operadoras/hq/travelace.png"},
+                {
+                    "descricao":"Seguro de Viagem completo SupremeDespesas Médicas, Hospitalares e/ou Odontológicas - DMHO - R$ 20.000,00\nMorte acidental - R$ 100.000,00\nInvalidez Permanente Total ou Parcial por Acidente - R$ 100.000,00",
+                    "operadora":"Porto Seguro",
+                    "dataSaida":"20-12-2019",
+                    "dataRetorno":"31-12-2019",
+                    "valorCompra":"R$ 120,00",
+                    "formaPagamento":"Cartão de Crédito",
+                    "imgUrl":"https://www.comparaonline.com.br/blog/wp-content/uploads/2015/10/logo-porto-seguro-1280x720.png"
+                }
+            ]
+        };
+
+        $(".card_apolice").append("<div class='img_section'><img style='width: 170px;' src='"+cotacoes['cotacoes'][is]['imgUrl']+"'></div><div class='texto_apolice'><h1 class='text-center'>"+cotacoes['cotacoes'][is]['operadora']+"</h1><p class='p_apolice'>"+cotacoes['cotacoes'][is]['descricao']+"</p></div><div class='valor_apolice valor_apolice_detalhe'><span>"+cotacoes['cotacoes'][is]['valorCompra']+"</span></div>");
+
+        function getParameters() {
+            var url_string = window.location.href;
+            var url = new URL(url_string);
+            var is = url.searchParams.get("is");
+             return is;
+        }
+    </script>
+</body>
+</html>

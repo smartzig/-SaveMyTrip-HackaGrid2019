@@ -1,0 +1,21 @@
+server:
+  port: 8081
+
+#Logs
+logging:
+  level:
+    ROOT: ${LOG_ROOT_LEVEL:INFO}
+
+spring:
+  application:
+    name: hackagr1d-service
+
+# Swagger configurations
+swaggerBaseUrl: ${SWAGGER_BASE_URL:localhost:${server.port}}
+
+# Enable the "/refresh" endpoint for dynamic configuration changes
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

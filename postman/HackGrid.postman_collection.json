@@ -1,0 +1,325 @@
+{
+	"info": {
+		"_postman_id": "406fbbf2-98d5-4dc3-bf69-f0bc7c887b22",
+		"name": "HackGrid",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "localhost:8080/cotacao",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "",
+						"value": "application/json",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"dataRetorno\": \"31-12-2019\",\n  \"dataSaida\": \"20-12-2019\",\n  \"destinos\": [\n    \"ARGENTINA\"\n  ],\n  \"passageiros\": [\n    {\n      \"dataNascimento\": \"1985-03-04T00:00:00.000Z\",\n      \"nome\": \"Tony Ramos\"\n    }\n  ],\n  \"tipoTarifa\": 1,\n  \"tipoViagem\": 1\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/cotacao",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"cotacao"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/cotacao Copy",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-Api-Key",
+						"value": "b7483bb4-f7f9-4521-a047-223fc550a1cb",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"dataRetorno\": \"31-12-2019\",\n  \"dataSaida\": \"20-12-2019\",\n  \"destinos\": [\n    \"ARGENTINA\"\n  ],\n  \"passageiros\": [\n    {\n      \"dataNascimento\": \"1985-03-04T00:00:00.000Z\",\n      \"nome\": \"Tony Ramos\"\n    }\n  ],\n  \"tipoTarifa\": 1,\n  \"tipoViagem\": 1\n}"
+				},
+				"url": {
+					"raw": "https://gateway.gr1d.io/sandbox/travelace/v1/Cotacao",
+					"protocol": "https",
+					"host": [
+						"gateway",
+						"gr1d",
+						"io"
+					],
+					"path": [
+						"sandbox",
+						"travelace",
+						"v1",
+						"Cotacao"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/pagamento e compra",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "",
+						"value": "application/json",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"currency\": \"string\",\n  \"externalIdentifier\": \"string\",\n  \"paymentInfo\": {\n    \"billingAddress\": {\n      \"bairro\": \"string\",\n      \"cep\": \"string\",\n      \"cidade\": \"string\",\n      \"complemento\": \"string\",\n      \"estado\": \"string\",\n      \"logradouro\": \"string\",\n      \"numero\": \"string\",\n      \"pais\": \"string\"\n    },\n    \"creditCard\": {\n      \"cardNumber\": \"string\",\n      \"cardType\": \"string\",\n      \"cvv\": \"string\",\n      \"expirationMonth\": \"string\",\n      \"expirationYear\": \"string\",\n      \"holderTaxId\": {\n        \"country\": \"string\",\n        \"taxId\": \"string\"\n      },\n      \"nameOnCard\": \"string\"\n    },\n    \"transactionType\": \"string\"\n  },\n  \"recipients\": [\n    {\n      \"account\": {\n        \"accountId\": \"string\"\n      },\n      \"amount\": \"string\",\n      \"currency\": \"string\"\n    }\n  ],\n  \"sender\": {\n    \"account\": {\n      \"accountId\": \"string\"\n    }\n  },\n   \"compra\": {\n  \"dataRetorno\": \"31-12-2019\",\n  \"dataSaida\": \"20-12-2019\",\n  \"descricao\": \"Seguro de Viagem completo plus. Despesas Médicas, Hospitalares e/ou Odontológicas - DMHO - R$ 10.000,00\\n Morte acidental - R$ 80.000,00\\n Invalidez Permanente Total ou Parcial por Acidente - R$ 80.000,00\",\n    \"formaPagamento\": \"Cartão de Crédito\",\n    \"imgUrl\": \"https://www.multiseguroviagem.com.br/www/img/operadoras/hq/travelace.png\",\n    \"operadora\": \"Travel Ace\",\n    \"valorCompra\": \"R$ 80,00\"\n},\n  \"totalAmount\": \"string\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/pagamento",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pagamento"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "07.d- Payments using Credit Card (only with an acquirer enabled) Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "922024ff-4a10-478f-8021-1a59c3d2d44d",
+						"exec": [
+							"tests[\"Status code is the expected\"] = responseCode.code === 200;",
+							"",
+							"if (responseCode.code === 200) ",
+							"    {",
+							"        var schema = {",
+							"        \"type\": \"object\",",
+							"        \"properties\": {",
+							"        \"data\": {",
+							"          \"type\": \"object\",",
+							"          \"properties\": {",
+							"            \"transactionId\": {",
+							"              \"type\": \"string\"",
+							"            },",
+							"            \"externalIdentifier\": {",
+							"              \"type\": \"string\"",
+							"            },",
+							"            \"senderAccountId\": {",
+							"              \"type\": \"string\"",
+							"            },",
+							"            \"creditCardToken\": {",
+							"              \"type\": \"string\"",
+							"            },",
+							"            \"financialStatement\": {",
+							"              \"type\": \"object\",",
+							"              \"properties\": {",
+							"                \"status\": {",
+							"                  \"type\": \"string\"",
+							"                },",
+							"                \"authorizationDetails\": {",
+							"                  \"type\": \"object\",",
+							"                  \"properties\": {",
+							"                    \"number\": {",
+							"                      \"type\": \"string\"",
+							"                    }",
+							"                  },",
+							"                  \"required\": [",
+							"                    \"number\"",
+							"                  ]",
+							"                }",
+							"              },",
+							"              \"required\": [",
+							"                \"status\",",
+							"                \"authorizationDetails\"",
+							"              ]",
+							"            }",
+							"          },",
+							"          \"required\": [",
+							"            \"transactionId\",",
+							"            \"externalIdentifier\",",
+							"            \"senderAccountId\",",
+							"            \"creditCardToken\",",
+							"            \"financialStatement\"",
+							"          ]",
+							"        }",
+							"      },",
+							"      \"required\": [",
+							"        \"data\"",
+							"      ]",
+							"    };",
+							"",
+							"        var data = JSON.parse(responseBody);",
+							" ",
+							"        var result = tv4.validateResult(data, schema);",
+							"",
+							"        tests[\"Response body structure is the expected\"] = result.valid;",
+							"    }"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "1acba3f2-f959-49db-a65f-ad723e646d9b",
+						"exec": [
+							"// Função para gerar número sequencial para evitar idempotência\r",
+							"function sequencial()\r",
+							"{\r",
+							" var sequencial = environment[\"Sequential\"].toNumber() + 1;\r",
+							" return sequencial;\r",
+							"}\r",
+							"\r",
+							"function gera_random(n)\r",
+							"{\r",
+							" var ranNum = Math.round(Math.random()*n);\r",
+							" return ranNum;\r",
+							"}\r",
+							"\r",
+							" \r",
+							"// Função para retornar o resto da divisao entre números (mod)\r",
+							"function mod(dividendo,divisor)\r",
+							"{\r",
+							" return Math.round(dividendo - (Math.floor(dividendo/divisor)*divisor));\r",
+							"}\r",
+							" \r",
+							"// Função que gera números de CPF válidos\r",
+							"function cpf()\r",
+							"{\r",
+							" var n = 9;\r",
+							" var n1 = gera_random(n);\r",
+							" var n2 = gera_random(n);\r",
+							" var n3 = gera_random(n);\r",
+							" var n4 = gera_random(n);\r",
+							" var n5 = gera_random(n);\r",
+							" var n6 = gera_random(n);\r",
+							" var n7 = gera_random(n);\r",
+							" var n8 = gera_random(n);\r",
+							" var n9 = gera_random(n);\r",
+							" var d1 = n9*2+n8*3+n7*4+n6*5+n5*6+n4*7+n3*8+n2*9+n1*10;\r",
+							" d1 = 11 - ( mod(d1,11) );\r",
+							" if (d1>=10) d1 = 0;\r",
+							" var d2 = d1*2+n9*3+n8*4+n7*5+n6*6+n5*7+n4*8+n3*9+n2*10+n1*11;\r",
+							" d2 = 11 - ( mod(d2,11) );\r",
+							" if (d2>=10) d2 = 0;\r",
+							" return ''+n1+n2+n3+n4+n5+n6+n7+n8+n9+d1+d2;\r",
+							"}\r",
+							" \r",
+							"// Função que gera números de CNPJ válidos\r",
+							"function cnpj()\r",
+							"{\r",
+							" var n = 9;\r",
+							" var n1 = gera_random(n);\r",
+							" var n2 = gera_random(n);\r",
+							" var n3 = gera_random(n);\r",
+							" var n4 = gera_random(n);\r",
+							" var n5 = gera_random(n);\r",
+							" var n6 = gera_random(n);\r",
+							" var n7 = gera_random(n);\r",
+							" var n8 = gera_random(n);\r",
+							" var n9 = 0;//gera_random(n);\r",
+							" var n10 = 0;//gera_random(n);\r",
+							" var n11 = 0;//gera_random(n);\r",
+							" var n12 = 1;//gera_random(n);\r",
+							" var d1 = n12*2+n11*3+n10*4+n9*5+n8*6+n7*7+n6*8+n5*9+n4*2+n3*3+n2*4+n1*5;\r",
+							" d1 = 11 - ( mod(d1,11) );\r",
+							" if (d1>=10) d1 = 0;\r",
+							" var d2 = d1*2+n12*3+n11*4+n10*5+n9*6+n8*7+n7*8+n6*9+n5*2+n4*3+n3*4+n2*5+n1*6;\r",
+							" d2 = 11 - ( mod(d2,11) );\r",
+							" if (d2>=10) d2 = 0;\r",
+							" return ''+n1+n2+n3+n4+n5+n6+n7+n8+n9+n10+n11+n12+d1+d2;\r",
+							"}\r",
+							"\r",
+							"//Armazenando Variáveis para o teste\r",
+							"postman.setEnvironmentVariable(\"individualTaxId\", cpf());\r",
+							"postman.setEnvironmentVariable(\"Sequential\", sequencial());\r",
+							"\r",
+							"var totalAmount = environment[\"TotalAmount\"] | 0\r",
+							"var recipientAmount1 = environment[\"AmountCustomer1\"] | 0\r",
+							"var recipientAmount2 = environment[\"TotalAmount\"] | 0\r",
+							"\r",
+							"// accountId do sender + numero do cartão + totalAmount + accountId do recipient + recipientAmount\r",
+							"var valoresHash = environment[\"Customer1AccountId\"].toString() + environment[\"creditCardNumber\"].toString() + totalAmount.toString() + environment[\"Customer2AccountId\"].toString() + recipientAmount2.toString();\r",
+							"\r",
+							"//Canculando TransactionHash da transação\r",
+							"postman.setEnvironmentVariable(\"Hash\",CryptoJS.HmacSHA256(valoresHash, environment[\"SecretKey\"]));"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Api-Access-Key",
+						"value": "813F6952-D615-4E5C-9547-C31ABED75895"
+					},
+					{
+						"key": "Transaction-Hash",
+						"value": "94fce6b541af4a841712a6965f5b139ccb4fde924f5618c0cf1590bd82d61727"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"totalAmount\": \"74.35\",\r\n\t\"currency\": \"BRL\",\r\n\t\"externalIdentifier\": \"11990111391\",\r\n\t\"sender\": {\r\n\t\t\"account\": {\r\n\t\t\t\"accountId\": \"09BB3B3D-4FB6-5216-FC80-51851CD4A319\"\r\n\t\t}\r\n\t},\r\n\t\"paymentInfo\": {\r\n\t\t\"transactionType\": \"CreditCard\",\r\n\t\t\"creditCard\": {\r\n\t\t\t\"cardType\": \"VISA\",\r\n\t\t\t\"cardNumber\": \"4970100000000055\",\r\n\t\t\t\"expirationMonth\": \"02\",\r\n\t\t\t\"expirationYear\": \"2020\",\r\n\t\t\t\"cvv\": \"132\",\r\n\t\t\t\"nameOnCard\": \"SENDER 13\",\r\n\t\t\t\"holderTaxId\": {\r\n\t\t\t\t\"taxId\": \"85103848007\",\r\n\t\t\t\t\"country\": \"BRA\"\r\n\t\t\t}\r\n\t\t},\r\n\t\t\"billingAddress\": {\r\n\t\t\t\"logradouro\": \"MATERA\",\r\n\t\t\t\"numero\": \"100\",\r\n\t\t\t\"complemento\": \"MATERA\",\r\n\t\t\t\"bairro\": \"MATERA\",\r\n\t\t\t\"cidade\": \"MATERA\",\r\n\t\t\t\"estado\": \"MT\",\r\n\t\t\t\"cep\": \"99999999\",\r\n\t\t\t\"pais\": \"BRA\"\r\n\t\t}\r\n\t},\r\n\t\"recipients\":\r\n\t[{\r\n\t\t\t\"account\": {\r\n\t\t\t\t\"accountId\": \"D8E0A966-C122-8769-131A-26DA4578D6D5\"\r\n\t\t\t},\r\n\t\t\t\"amount\": \"74.35\",\r\n\t\t\t\"currency\": \"BRL\"\r\n\t\t}\r\n\t]\r\n}"
+				},
+				"url": {
+					"raw": "https://varcom-mp-api-01.matera.com/v1/payments",
+					"protocol": "https",
+					"host": [
+						"varcom-mp-api-01",
+						"matera",
+						"com"
+					],
+					"path": [
+						"v1",
+						"payments"
+					]
+				},
+				"description": "*** ATTENTION ***\r\nThis API Call is only used to individual that had already paid using boleto\r\n\r\nYou must set the values from 'senderAccountId' and 'creditCardToken' to fill the response body at the first time paid with the boleto\r\n"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- JQUERY -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Common CSS & JS -->
+    <link rel="stylesheet" href="css/common.css">
+    <script src="js/common.js"></script>
+
+    <title>#SaveMyTrip</title>
+</head>
+<body>
+    <header class="header">
+        <div>
+            <img src="imgs/paper-plane.svg">
+        </div>
+        <div>
+            <h1>#SaveMyTrip</h1>
+            <p>Queremos te proporcionar uma relação diferente com sua seguradora</p>
+
+        </div>
+    </header>
+
+    <section class="main_section">
+        <h1>Status da compra</h1>
+
+        
+    </section>
+
+    <script>
+        var dataToSend = {
+            "currency": "string",
+            "externalIdentifier": "string",
+            "paymentInfo": {
+                "billingAddress": {
+                "bairro": "string",
+                "cep": "string",
+                "cidade": "string",
+                "complemento": "string",
+                "estado": "string",
+                "logradouro": "string",
+                "numero": "string",
+                "pais": "string"
+                },
+                "creditCard": {
+                "cardNumber": "string",
+                "cardType": "string",
+                "cvv": "string",
+                "expirationMonth": "string",
+                "expirationYear": "string",
+                "holderTaxId": {
+                    "country": "string",
+                    "taxId": "string"
+                },
+                "nameOnCard": "string"
+                },
+                "transactionType": "string"
+            },
+            "recipients": [
+                {
+                "account": {
+                    "accountId": "string"
+                },
+                "amount": "string",
+                "currency": "string"
+                }
+            ],
+            "sender": {
+                "account": {
+                "accountId": "string"
+                }
+            },
+            "compra": {
+            "dataRetorno": "31-12-2019",
+            "dataSaida": "20-12-2019",
+            "descricao": "Seguro de Viagem completo plus. Despesas Médicas, Hospitalares e/ou Odontológicas - DMHO - R$ 10.000,00\n Morte acidental - R$ 80.000,00\n Invalidez Permanente Total ou Parcial por Acidente - R$ 80.000,00",
+                "formaPagamento": "Cartão de Crédito",
+                "imgUrl": "https://www.multiseguroviagem.com.br/www/img/operadoras/hq/travelace.png",
+                "operadora": "Travel Ace",
+                "valorCompra": "R$ 80,00"
+            },
+            "totalAmount": "string"
+        };
+
+        $.ajax({
+            url: "http://10.80.4.143:8081/pagamento",
+            method: "post",
+            data: JSON.stringify(dataToSend),
+            contentType: "application/json",
+        }).done(function(data, rep) {
+            var append = '<p class="sucesso">A compra foi realizada com sucesso! Você receberá dentro de instantes a(s) apólice(s) em seu e-mail!</p>';
+            if(rep != 'success') {
+                append = '<p class="erro">Infelizmente ocorreu um erro durante a contração do seguro. Tente novamente ou entre em contato com o suporte.</p>';
+            }
+
+            $(".main_section").append(append);
+        });
+    </script>
+</body>
+</html>

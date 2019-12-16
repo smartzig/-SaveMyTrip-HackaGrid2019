@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- JQUERY -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Common CSS & JS -->
+    <link rel="stylesheet" href="css/common.css">
+    <script src="js/common.js"></script>
+
+    <title>#SaveMyTrip</title>
+</head>
+<body>
+    <header class="header">
+        <div>
+            <img src="imgs/paper-plane.svg">
+        </div>
+        <div>
+            <h1>#SaveMyTrip</h1>
+            <p>Queremos te proporcionar uma relação diferente com sua seguradora</p>
+
+        </div>
+    </header>
+
+    <section class="main_section">
+
+        <h1>Opções de apólices</h1>
+
+        <div class="apolices"></div>
+
+        
+    </section>
+
+
+    <script>
+        cotarApolices();
+
+        function cotarApolices() {
+            var dataToSend = {
+                dataRetorno: "31-12-2019",
+                dataSaida: "20-12-2019",
+                destinos: [
+                    "ARGENTINA"
+                ],
+                passageiros: [{
+                    dataNascimento: "1985-03-04T00:00:00.000Z",
+                    nome: "Tony Ramos"
+                }],
+                tipoTarifa: 1,
+                tipoViagem: 1
+            };
+
+            $.ajax({
+                url: "http://10.80.4.143:8081/cotacao",
+                method: "post",
+                data: JSON.stringify(dataToSend),
+                contentType: "application/json",
+            }).done(function(data) {
+                for (let index = 0; index < data.cotacoes.length; index++) {
+                    const element = data.cotacoes[index];
+
+                    $(".apolices").append("<div class='card_apolice'><div class='img_section'><img src='"+data.cotacoes[index]['imgUrl']+"'></div><div class='texto_apolice'><h1 class='text-center'>"+data.cotacoes[index]['operadora']+"</h1><p class='p_apolice'>"+data.cotacoes[index]['descricao']+"</p></div><div class='valor_apolice'><span>"+data.cotacoes[index]['valorCompra']+"</span></div></div>");
+                }
+
+                elippses();
+            });
+  
+        }
+
+        function elippses() {
+            var length = 70;
+
+            var texts = document.getElementsByClassName('p_apolice');
+
+            for (let index = 0; index < texts.length; index++) {
+                var string = texts[index].innerHTML;
+
+                var trimmedString = string.length > length ?
+                string.substring(0, length - 3) + "..." :
+                string
+
+                texts[index].innerHTML = trimmedString
+            }
+        }
+
+        $(document).on('click', '.card_apolice', function(){
+            var parameter = 0;
+            if(!$( this ).is(":first-child")) {
+                parameter = 1;
+            }
+            location.href = "apolice_detalhes.html?is="+parameter;
+        });
+    </script>
+</body>
+</html>

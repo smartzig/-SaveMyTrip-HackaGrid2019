@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- JQUERY -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Common CSS & JS -->
+    <link rel="stylesheet" href="css/common.css">
+    <script src="js/common.js"></script>
+
+    <title>#SaveMyTrip</title>
+</head>
+<body>
+    <header class="header">
+        <div>
+            <img src="imgs/paper-plane.svg">
+        </div>
+        <div>
+            <h1>#SaveMyTrip</h1>
+            <p>Queremos te proporcionar uma relação diferente com sua seguradora</p>
+
+        </div>
+    </header>
+
+    <section class="main_section">
+        <h1>Sua viagem</h1>
+
+        <form action="apolices.html" class="form">
+            <div class="form-input">
+                <input type="text" placeholder="Origem" id="origem">
+            </div>
+
+            <div class="form-input">
+                <input type="text" placeholder="Destino" id="destino">
+            </div>
+
+            <div class="form-input">
+                <input type="date" placeholder="Data de embarque" onchange="this.className=(this.value!=''?'has-value':'')" id="embarque">
+            </div>
+
+            <div class="form-input">
+                <input type="date" placeholder="Data de desembarque" onchange="this.className=(this.value!=''?'has-value':'')" id="desembarque">
+            </div>
+
+            <div class="form-input">
+                <button class="btn">Confirmar</button>
+            </div>
+        </form>
+    </section>
+</body>
+</html>
