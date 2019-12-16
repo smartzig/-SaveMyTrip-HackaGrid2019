@@ -1,5 +1,3 @@
--#SaveMyTrip-HackaGrid2019
-
 
 O #SaveMyTrip é um aplicativo de comercialização de Seguros de viagens integrado a uma plataforma de engajamento de clientes que utiliza Totens localizados em pontos estratégicos aliado a realidade aumentada para ofertar e divulgar a cultura de utilização de seguros de viagens. Que além de orfetar seguros melhora o banco de dados de leading.
 
